@@ -1,20 +1,17 @@
-# Launch School COURSE_NUM Coursework
+# Launch School LS170 Coursework
 
-## COURSE TITLE
+## Networking Foundations
 
-These are my assignment and practice problem solutions for COURSE_NUM.
+These are my assignment and practice problem solutions for LS170.
 
 ### Requirements
 
-- `node`
-- `npm`
-
-### Setup
-
-Clone repository and run `npm install` to install dependencies.
+- `bash` v4+ (for `coproc`)
 
 ### Sections
 
-#### Lesson 1: LESSON TITLE
+#### Lesson 4: Working with HTTP
 
-ADD LESSON FILE OVERVIEW HERE
+- `http-server.sh`
+
+  A basic HTTP server using `bash`, and an `nc` `coproc`.
