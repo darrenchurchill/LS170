@@ -50,4 +50,10 @@ function server () {
 
 coproc SERVER_PROCESS { server; }
 
+function cleanup() {
+    kill $SERVER_PROCESS_PID && echo goodbye
+}
+
+trap cleanup SIGINT SIGCHLD
+
 nc -lkv 2345 <&"${SERVER_PROCESS[0]}" >&"${SERVER_PROCESS[1]}"
