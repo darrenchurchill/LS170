@@ -5,10 +5,16 @@
 function response_200() {
     echo -ne 'HTTP/1.1 200 OK\r\n'
     echo -ne '\r\n'
+    cat "$1"
 }
 
 function response_400() {
     echo -ne 'HTTP/1.1 400 Bad Request\r\n'
+    echo -ne '\r\n'
+}
+
+function response_404() {
+    echo -ne 'HTTP/1.1 404 Not Found\r\n'
     echo -ne '\r\n'
 }
 
@@ -17,7 +23,11 @@ function server () {
         read method path version
 
         if test "$method" = "GET"; then
-            response_200
+            if test -r "./www/$path"; then
+                response_200 "./www/$path"
+            else
+                response_404
+            fi
         else
             response_400
         fi
