@@ -2,14 +2,24 @@
 # LS170 Lesson 4
 # HTTP Server Using `nc` and `coproc`
 
+function response_200() {
+    echo -ne 'HTTP/1.1 200 OK\r\n'
+    echo -ne '\r\n'
+}
+
+function response_400() {
+    echo -ne 'HTTP/1.1 400 Bad Request\r\n'
+    echo -ne '\r\n'
+}
+
 function server () {
     while true; do
         read method path version
 
         if test "$method" = "GET"; then
-            echo 'HTTP/1.1 200 OK'
+            response_200
         else
-            echo 'HTTP/1.1 400 Bad Request'
+            response_400
         fi
     done
 }
