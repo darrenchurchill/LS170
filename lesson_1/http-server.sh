@@ -3,7 +3,10 @@
 # HTTP Server Using `nc` and `coproc`
 
 function server () {
-    true
+    while true; do
+        read message
+        echo "You said: $message"
+    done
 }
 
 coproc SERVER_PROCESS { server; }
